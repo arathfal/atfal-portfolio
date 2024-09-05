@@ -10,9 +10,5 @@ export function middleware(request: NextRequest) {
     response = NextResponse.redirect(new URL('/about', request.url))
   }
 
-  if (request.nextUrl.pathname === '/about') {
-    response = NextResponse.rewrite(new URL('/', request.url))
-  }
-
   return response
 }
