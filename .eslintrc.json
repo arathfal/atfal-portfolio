@@ -1,0 +1,43 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "sibling"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "./*.{css,scss,js}",
+            "group": "sibling",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "warnOnUnassignedImports": true
+      }
+    ]
+  }
+}
