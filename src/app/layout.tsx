@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Exo_2 as Exo2 } from 'next/font/google'
 
+import { Footer, Header } from '@/components/layouts'
+import { ThemeProvider } from '@/components/theme'
 import { cn } from '@/lib/utils'
 
 import './globals.css'
@@ -25,10 +27,7 @@ export const metadata: Metadata = {
     { rel: 'icon', sizes: '16x16', url: '/favicon-16x16.png' },
     { rel: 'apple-touch-icon', sizes: '180x180', url: '/apple-touch-icon.png' }
   ],
-  robots: 'index, follow',
-  openGraph: {
-    locale: 'id_ID'
-  }
+  robots: 'index, follow'
 }
 
 export default function RootLayout({
@@ -37,15 +36,31 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'relative grid max-h-screen overflow-hidden bg-slate-500/10 antialiased dark:bg-slate-950/10',
-          'before:absolute before:-left-[150%] before:top-0 before:z-[-1] before:h-full before:w-[300%] before:rotate-45 before:bg-slate-500/30 before:content-[""] before:dark:bg-slate-950/50',
+          'bg-white font-medium text-slate-900 dark:bg-slate-800 dark:text-white',
           font.className
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div
+            id="next_app"
+            className={cn(
+              'grid-layout relative grid max-h-screen grid-rows-[80px,1fr] overflow-hidden bg-slate-500/10 antialiased dark:bg-slate-950/10 sm:grid-rows-[80px,1fr,64px]',
+              'before:absolute before:-left-[150%] before:top-0 before:z-[-1] before:h-full before:w-[300%] before:rotate-45 before:bg-slate-500/30 before:content-[""] before:dark:bg-slate-950/50'
+            )}
+          >
+            <Header />
+            {children}
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

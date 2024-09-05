@@ -9,8 +9,35 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  .grid-layout {
+    grid-template-areas:
+      'header'
+      'main';
+  }
+
+  @media (min-width: 640px) {
+    .grid-layout {
+      grid-template-areas:
+        'header'
+        'main'
+        'footer';
+    }
+  }
+
+  .grid-layout > header {
+    grid-area: header;
+  }
+
+  .grid-layout > main {
+    grid-area: main;
+  }
+
+  .grid-layout > main::-webkit-scrollbar {
+    @apply w-0;
+  }
+
+  .grid-layout > footer {
+    grid-area: footer;
   }
 }
