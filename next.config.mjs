@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify: true
+  swcMinify: true,
+  env: {
+    URL: process.env.URL
+  }
 }
 
 export default nextConfig
