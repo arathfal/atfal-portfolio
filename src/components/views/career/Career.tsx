@@ -1,15 +1,15 @@
 import Image from 'next/image'
 
 import { CareersType } from '@/types/careers'
+import fetcher from '@/utils/fetcher'
 
 async function getCareer() {
-  const response = await fetch(process.env.URL + '/api/careers')
-  const result = await response.json()
-  return result
+  const response = await fetcher(process.env.CAREERS_PATH)
+  return response
 }
 
 export default async function Career() {
-  const career = await getCareer()
+  const careers = await getCareer()
 
   return (
     <main className="container relative mx-auto flex h-[calc(100vh-80px)] flex-col gap-4 overflow-auto p-5 sm:h-[calc(100vh-80px-64px)] md:flex-row md:overflow-hidden">
@@ -26,7 +26,7 @@ export default async function Career() {
         </p>
       </section>
       <section className="w-full md:w-3/5 md:overflow-auto [&::-webkit-scrollbar]:w-0">
-        {career?.data?.map((item: CareersType) => {
+        {careers?.map((item: CareersType) => {
           return (
             <div key={item?.title} className="relative mx-auto flex items-center py-5">
               <div className="absolute inset-0 flex h-full w-10 items-center justify-center">
