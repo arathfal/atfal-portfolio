@@ -38,7 +38,14 @@ export default function Header() {
     <header className="relative flex w-full items-center px-5 py-5 sm:px-8">
       <div className="flex w-full items-center gap-3 border-gray-400 sm:w-auto sm:border-r sm:pr-5">
         <figure className="inline-flex size-10 items-center justify-center rounded-full bg-white">
-          <Image src="/Black Logo.png" width={24} height={24} alt="Logo" sizes="100%" priority />
+          <Image
+            src="/images/Black Logo.png"
+            width={24}
+            height={24}
+            alt="Logo"
+            sizes="100%"
+            priority
+          />
         </figure>
         <strong className="hidden text-lg sm:inline-block">Atfal.Dev</strong>
 

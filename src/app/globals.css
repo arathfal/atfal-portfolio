@@ -30,11 +30,8 @@
   }
 
   .grid-layout > main {
+    @apply [&::-webkit-scrollbar]:w-0;
     grid-area: main;
-  }
-
-  .grid-layout > main::-webkit-scrollbar {
-    @apply w-0;
   }
 
   .grid-layout > footer {
