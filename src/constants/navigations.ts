@@ -4,12 +4,12 @@ const NAVIGATIONS = [
     href: '/about'
   },
   {
-    label: 'Career',
-    href: '/career'
-  },
-  {
     label: 'Projects',
     href: '/projects'
+  },
+  {
+    label: 'Career',
+    href: '/career'
   }
 ]
 
