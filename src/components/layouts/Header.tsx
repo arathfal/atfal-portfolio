@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import NAVIGATIONS from '@/constants/navigations'
+import useOnClickOutside from '@/hooks/useOnClickOutside'
 import { cn } from '@/lib/utils'
 
 import { CrossIcon, LoveIcon, MenuIcon } from '../icons'
@@ -15,9 +16,11 @@ import Button from '../ui/button'
 
 export default function Header() {
   const pathname = usePathname()
+  const navRef = useRef<HTMLDivElement | null>(null)
   const [isShowMenu, setIsShowMenu] = useState<boolean>(true)
 
   const toggleMenu = () => setIsShowMenu(!isShowMenu)
+  useOnClickOutside(navRef, () => setIsShowMenu(false))
 
   useEffect(() => {
     const handleResize = () => {
@@ -76,6 +79,7 @@ export default function Header() {
       </div>
 
       <div
+        ref={navRef}
         className={cn(
           'absolute right-0 top-0 z-50 flex h-screen w-60 flex-col gap-5 bg-white p-4 transition-all duration-500 dark:bg-slate-950 sm:relative sm:h-auto sm:w-full sm:flex-row sm:items-center sm:justify-between sm:bg-transparent sm:p-0 sm:dark:bg-transparent',
           {
@@ -95,6 +99,7 @@ export default function Header() {
               key={label}
               prefetch={false}
               href={href}
+              onClick={() => setIsShowMenu(false)}
               className={cn('px-2 py-1 text-center font-semibold transition-all duration-300', {
                 '[&:not(:hover)]:text-slate-600 [&:not(:hover)]:dark:text-slate-400':
                   href !== pathname,
