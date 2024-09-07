@@ -1,18 +1,21 @@
+'use client'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 import { CareersType } from '@/types/careers'
-import fetcher from '@/utils/fetcher'
 
-async function getCareer() {
-  const response = await fetcher(process.env.CAREERS_PATH)
-  return response
+type Props = {
+  careers: CareersType[]
 }
 
-export default async function Career() {
-  const careers = await getCareer()
-
+export default function Career({ careers }: Props) {
   return (
-    <main className="container relative mx-auto flex h-[calc(100vh-80px)] flex-col gap-4 overflow-auto p-5 sm:h-[calc(100vh-80px-64px)] md:flex-row md:overflow-hidden">
+    <motion.main
+      initial={{ scale: 0.9, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 1, ease: [0.2, 0.8, 0.6, 1] }}
+      className="container relative mx-auto flex h-[calc(100vh-80px)] flex-col gap-4 overflow-auto p-5 sm:h-[calc(100vh-80px-64px)] md:flex-row md:overflow-hidden"
+    >
       <section className="w-full md:w-2/5">
         <h1 className="title-font mb-4 text-4xl xl:text-5xl">
           <strong>
@@ -33,7 +36,12 @@ export default async function Career() {
                 <div className="pointer-events-none h-full w-1 bg-slate-400 dark:bg-slate-600"></div>
               </div>
               <figure className="title-font relative z-10 mt-10 inline-flex size-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-slate-400 bg-slate-200 text-sm font-medium dark:border-slate-600 sm:mt-0">
-                <Image width={28} height={28} src={item?.image} alt={item?.title} />
+                <Image
+                  width={28}
+                  height={28}
+                  src={item?.image || '/images/default.svg'}
+                  alt={item?.title}
+                />
               </figure>
               <span className="hidden h-1 w-14 bg-slate-400 dark:bg-slate-600 min-[640px]:inline-block"></span>
               <div className="flex flex-col items-start rounded-md pl-4 sm:flex-row sm:items-center min-[640px]:pl-0">
@@ -51,6 +59,6 @@ export default async function Career() {
           )
         })}
       </section>
-    </main>
+    </motion.main>
   )
 }

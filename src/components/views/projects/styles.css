@@ -1,0 +1,11 @@
+.swiper {
+  @apply w-full md:h-full;
+}
+
+.swiper:-webkit-scrollbar {
+  @apply w-0;
+}
+
+.swiper-slide {
+  @apply flex w-4/5 justify-center md:items-center;
+}

@@ -5,4 +5,5 @@ export type PortfoliosType = {
   url: string
   description: string
   contribution: string[]
+  disabled?: boolean
 }

@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { DocumentIcon } from '@/components/icons'
+import Button from '@/components/ui/button'
 import TECH_STACKS from '@/constants/tech-tacks'
 
 export default function About() {
@@ -35,22 +35,19 @@ export default function About() {
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <Link
-            prefetch={false}
-            href="/projects"
-            className="w-32 rounded border border-slate-600 bg-slate-600 py-2 text-center text-lg font-semibold text-white transition-all hover:bg-slate-500"
-          >
+          <Button href="/projects" variant="primary" className="w-32" title="Explore Projects">
             Explore
-          </Link>
-          <Link
-            prefetch={false}
+          </Button>
+          <Button
             href="/resume.pdf"
             target="_blank"
-            className="inline-flex w-32 items-center justify-center gap-1 rounded border border-slate-500 bg-slate-950 py-2 text-lg font-semibold text-white transition-all hover:bg-slate-900"
+            variant="secondary"
+            className="w-32"
+            title="Resume Preview"
           >
             <DocumentIcon className="size-4 fill-white" />
             Resume
-          </Link>
+          </Button>
         </div>
       </section>
       <section className="relative order-1 mb-8 flex w-5/6 justify-center md:order-2 md:mb-0 md:w-1/2 lg:w-full lg:max-w-lg">
@@ -62,6 +59,7 @@ export default function About() {
             sizes="100%"
             fill
             priority
+            title="Aradea Atfal Risdianto"
           />
         </figure>
       </section>
