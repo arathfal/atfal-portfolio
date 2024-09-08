@@ -27,7 +27,12 @@ export const metadata: Metadata = {
     { rel: 'icon', sizes: '16x16', url: '/images/favicon-16x16.png' },
     { rel: 'apple-touch-icon', sizes: '180x180', url: '/images/apple-touch-icon.png' }
   ],
-  robots: 'index, follow'
+  robots: 'index, follow',
+  category: 'Portfolio',
+  themeColor: '#E5E5E5',
+  alternates: {
+    canonical: process.env.URL
+  }
 }
 
 export default function RootLayout({
