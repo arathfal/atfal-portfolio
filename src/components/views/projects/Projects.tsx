@@ -11,6 +11,8 @@ import type { PortfoliosType } from '@/types/portfolios'
 import ProjectsModal from './ProjectsModal'
 import ProjectsSwiper from './ProjectsSwiper'
 
+import './styles.css'
+
 type Props = {
   projects: PortfoliosType[]
   projectByIndex: Record<number, PortfoliosType>
@@ -70,7 +72,7 @@ export default function Projects({ projects, projectByIndex }: Props) {
             </Button>
           </div>
         </div>
-        <div className="swiper-pagination -bottom-8 top-[unset] flex min-w-full gap-1 text-center sm:min-w-[500px] md:-bottom-14 md:text-left" />
+        <div className="swiper-pagination" />
       </section>
       <ProjectsSwiper
         slides={projects}

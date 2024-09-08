@@ -18,16 +18,25 @@ export default function Header() {
   const pathname = usePathname()
   const navRef = useRef<HTMLDivElement | null>(null)
   const [isShowMenu, setIsShowMenu] = useState<boolean>(true)
+  const [isMobile, setIsMobile] = useState<boolean>(true)
 
   const toggleMenu = () => setIsShowMenu(!isShowMenu)
-  useOnClickOutside(navRef, () => setIsShowMenu(false))
+
+  const hideMenuMobile = () => {
+    if (isMobile && isShowMenu) {
+      setIsShowMenu(false)
+    }
+  }
+  useOnClickOutside(navRef, hideMenuMobile)
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 640) {
         setIsShowMenu(true)
+        setIsMobile(false)
       } else {
         setIsShowMenu(false)
+        setIsMobile(true)
       }
     }
     if (typeof window !== 'undefined') {
@@ -99,7 +108,7 @@ export default function Header() {
               key={label}
               prefetch={false}
               href={href}
-              onClick={() => setIsShowMenu(false)}
+              onClick={hideMenuMobile}
               className={cn('px-2 py-1 text-center font-semibold transition-all duration-300', {
                 '[&:not(:hover)]:text-slate-600 [&:not(:hover)]:dark:text-slate-400':
                   href !== pathname,

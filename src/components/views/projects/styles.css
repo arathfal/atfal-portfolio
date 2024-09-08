@@ -9,3 +9,11 @@
 .swiper-slide {
   @apply flex w-4/5 justify-center md:items-center;
 }
+
+.swiper-pagination {
+  @apply top-[unset] min-w-full text-center sm:min-w-[500px] md:text-left;
+}
+
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  @apply -bottom-8 md:-bottom-14;
+}
