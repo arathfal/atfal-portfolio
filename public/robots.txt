@@ -1,3 +1,9 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
-Disallow:
+Allow: /
+
+# Host
+Host: https://aradea-atfal.vercel.app
+
+# Sitemaps
+Sitemap: https://aradea-atfal.vercel.app/sitemap.xml
