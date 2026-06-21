@@ -1,0 +1,8 @@
+.next
+node_modules
+out
+build
+coverage
+prisma/dev.db
+package-lock.json
+public/images/profile/aradea-hero.png
