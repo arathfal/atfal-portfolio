@@ -7,6 +7,7 @@ export type ProjectInput = {
   demoUrl: string | null;
   repoUrl: string | null;
   featured: boolean;
+  status: boolean;
 };
 
 export type ExperienceInput = {
@@ -123,6 +124,10 @@ export function validateProjectInput(
     return { success: false, error: "Featured must be a boolean." };
   }
 
+  if (typeof value.status !== "boolean") {
+    return { success: false, error: "Status must be a boolean." };
+  }
+
   if (
     value.thumbnailPublicId !== null &&
     value.thumbnailPublicId !== undefined &&
@@ -146,6 +151,7 @@ export function validateProjectInput(
       demoUrl: demoUrl.data,
       repoUrl: repoUrl.data,
       featured: value.featured,
+      status: value.status,
     },
   };
 }

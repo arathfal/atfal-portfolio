@@ -48,7 +48,7 @@ export function ProjectCard({
           </ul>
 
           <div className="mt-auto flex items-center gap-3 pt-6">
-            {project.demoUrl && (
+            {project.demoUrl && project.status && (
               <a
                 href={project.demoUrl}
                 target="_blank"
@@ -58,6 +58,14 @@ export function ProjectCard({
                 Live demo
                 <ArrowUpRight aria-hidden="true" className="size-4" />
               </a>
+            )}
+            {project.demoUrl && !project.status && (
+              <span
+                className="inline-flex cursor-not-allowed items-center gap-1.5 text-sm font-semibold text-muted-foreground/70"
+                title="Demo ini sudah tidak dapat diakses"
+              >
+                Demo unavailable
+              </span>
             )}
             {project.repoUrl && (
               <a

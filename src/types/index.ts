@@ -7,6 +7,7 @@ export type Project = {
   demoUrl: string | null;
   repoUrl: string | null;
   featured: boolean;
+  status: boolean;
   createdAt: string;
 };
 

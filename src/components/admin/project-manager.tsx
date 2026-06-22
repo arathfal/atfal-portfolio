@@ -13,6 +13,7 @@ type AdminProject = {
   demoUrl: string | null;
   repoUrl: string | null;
   featured: boolean;
+  status: boolean;
 };
 
 type UploadSignature = {
@@ -118,6 +119,7 @@ export function ProjectManager({ projects }: { projects: AdminProject[] }) {
             demoUrl: form.get("demoUrl"),
             repoUrl: form.get("repoUrl"),
             featured: form.get("featured") === "on",
+            status: form.get("status") === "on",
           }),
         },
       );
@@ -168,7 +170,18 @@ export function ProjectManager({ projects }: { projects: AdminProject[] }) {
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <h3 className="font-semibold">{project.title}</h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="font-semibold">{project.title}</h3>
+                    <span
+                      className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                        project.status
+                          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300"
+                          : "bg-red-100 text-red-700 dark:bg-red-950/40 dark:text-red-300"
+                      }`}
+                    >
+                      {project.status ? "Demo aktif" : "Demo tidak aktif"}
+                    </span>
+                  </div>
                   <p className="mt-1 text-sm text-muted-foreground">
                     {project.techStack.join(" · ")}
                   </p>
@@ -272,6 +285,18 @@ export function ProjectManager({ projects }: { projects: AdminProject[] }) {
               className={inputClass}
             />
           </label>
+          <label className="flex items-center gap-3 text-sm font-medium">
+            <input
+              name="status"
+              type="checkbox"
+              defaultChecked={editing?.status ?? true}
+              className="size-4 accent-primary"
+            />
+            Demo dapat diakses
+          </label>
+          <p className="-mt-2 text-xs text-muted-foreground">
+            Matikan jika URL demo sudah offline atau tidak bisa dibuka.
+          </p>
           <label className="flex items-center gap-3 text-sm font-medium">
             <input
               name="featured"

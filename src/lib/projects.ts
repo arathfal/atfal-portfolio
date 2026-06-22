@@ -33,6 +33,7 @@ export function toPublicProject(project: PrismaProject): Project {
     demoUrl: project.demoUrl,
     repoUrl: project.repoUrl,
     featured: project.featured,
+    status: project.status,
     createdAt: project.createdAt.toISOString(),
   };
 }

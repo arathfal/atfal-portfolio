@@ -12,7 +12,7 @@
     "lint:fix": "eslint --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "seed": "tsx prisma/seed.ts",
+    "seed": "pnpm prisma:generate && tsx prisma/seed.ts",
     "prisma:generate": "prisma generate --schema prisma/sqlite/schema.prisma",
     "prisma:generate:prod": "prisma generate --schema prisma/postgresql/schema.prisma",
     "prisma:migrate": "prisma migrate dev --schema prisma/sqlite/schema.prisma",

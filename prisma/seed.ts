@@ -17,6 +17,7 @@ const projects = [
     demoUrl: "https://nusa-commerce.vercel.app",
     repoUrl: "https://github.com/example/nusa-commerce",
     featured: true,
+    status: true,
     createdAt: new Date("2025-11-12T08:00:00.000Z"),
   },
   {
@@ -33,6 +34,7 @@ const projects = [
     demoUrl: "https://pulse-analytics.vercel.app",
     repoUrl: "https://github.com/example/pulse-analytics",
     featured: true,
+    status: true,
     createdAt: new Date("2025-07-20T08:00:00.000Z"),
   },
   {
@@ -49,6 +51,7 @@ const projects = [
     demoUrl: "https://ruang-kolaborasi.vercel.app",
     repoUrl: "https://github.com/example/ruang-kolaborasi",
     featured: true,
+    status: true,
     createdAt: new Date("2025-03-08T08:00:00.000Z"),
   },
   {
@@ -60,6 +63,7 @@ const projects = [
     demoUrl: "https://jelajah-nusantara.vercel.app",
     repoUrl: "https://github.com/example/jelajah-nusantara",
     featured: false,
+    status: false,
     createdAt: new Date("2024-10-15T08:00:00.000Z"),
   },
   {
@@ -71,6 +75,7 @@ const projects = [
     demoUrl: "https://finora-banking.vercel.app",
     repoUrl: "https://github.com/example/finora-banking",
     featured: false,
+    status: true,
     createdAt: new Date("2024-05-02T08:00:00.000Z"),
   },
 ];

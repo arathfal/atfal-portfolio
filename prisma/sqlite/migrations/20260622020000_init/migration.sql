@@ -9,6 +9,7 @@ CREATE TABLE "projects" (
     "demo_url" TEXT,
     "repo_url" TEXT,
     "featured" BOOLEAN NOT NULL DEFAULT false,
+    "status" BOOLEAN NOT NULL DEFAULT true,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" DATETIME NOT NULL
 );

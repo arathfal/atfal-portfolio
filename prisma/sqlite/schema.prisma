@@ -24,6 +24,7 @@ model Project {
   demoUrl           String?  @map("demo_url")
   repoUrl           String?  @map("repo_url")
   featured          Boolean  @default(false)
+  status            Boolean  @default(true)
   createdAt         DateTime @default(now()) @map("created_at")
   updatedAt         DateTime @updatedAt @map("updated_at")
 
