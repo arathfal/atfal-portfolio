@@ -18,6 +18,13 @@ export function toPublicExperience(experience: PrismaExperience): Experience {
   };
 }
 
+export function toAdminExperience(experience: PrismaExperience) {
+  return {
+    ...toPublicExperience(experience),
+    logoPublicId: experience.logoPublicId,
+  };
+}
+
 export async function listExperiences(): Promise<Experience[]> {
   const experiences = await prisma.experience.findMany({
     orderBy: [{ startDate: "desc" }, { id: "desc" }],
@@ -31,10 +38,7 @@ export async function listAdminExperiences() {
     orderBy: [{ startDate: "desc" }, { id: "desc" }],
   });
 
-  return experiences.map((experience) => ({
-    ...toPublicExperience(experience),
-    logoPublicId: experience.logoPublicId,
-  }));
+  return experiences.map(toAdminExperience);
 }
 
 export async function createExperience(input: ExperienceInput) {

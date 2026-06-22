@@ -4,7 +4,7 @@ import { NextRequest } from "next/server";
 import { guardAdminApi, privateJson } from "@/lib/admin-api";
 import { deleteCloudinaryImage } from "@/lib/cloudinary";
 import { prisma } from "@/lib/prisma";
-import { updateExperience } from "@/lib/experiences";
+import { toAdminExperience, updateExperience } from "@/lib/experiences";
 import { parseNumericId, validateExperienceInput } from "@/lib/validation";
 
 type RouteContext = { params: Promise<{ id: string }> };
@@ -36,7 +36,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
       return privateJson({ error: "Experience not found." }, { status: 404 });
     }
 
-    await updateExperience(id, parsed.data);
+    const experience = await updateExperience(id, parsed.data);
 
     if (
       previous.logoPublicId &&
@@ -47,7 +47,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
       });
     }
 
-    return privateJson({ success: true });
+    return privateJson(toAdminExperience(experience));
   } catch (error) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
@@ -76,7 +76,7 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
         console.error("Failed to delete career logo:", error);
       });
     }
-    return privateJson({ success: true });
+    return privateJson({ success: true, id: experience.id });
   } catch (error) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&

@@ -1,7 +1,11 @@
 import { NextRequest } from "next/server";
 
 import { guardAdminApi, privateJson } from "@/lib/admin-api";
-import { createExperience, listAdminExperiences } from "@/lib/experiences";
+import {
+  createExperience,
+  listAdminExperiences,
+  toAdminExperience,
+} from "@/lib/experiences";
 import { validateExperienceInput } from "@/lib/validation";
 
 export async function GET(request: NextRequest) {
@@ -28,5 +32,5 @@ export async function POST(request: NextRequest) {
   }
 
   const experience = await createExperience(parsed.data);
-  return privateJson({ id: experience.id }, { status: 201 });
+  return privateJson(toAdminExperience(experience), { status: 201 });
 }

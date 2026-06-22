@@ -38,6 +38,14 @@ export function toPublicProject(project: PrismaProject): Project {
   };
 }
 
+export function toAdminProject(project: PrismaProject) {
+  return {
+    ...toPublicProject(project),
+    thumbnailPublicId: project.thumbnailPublicId,
+    updatedAt: project.updatedAt.toISOString(),
+  };
+}
+
 export async function listProjects(featured?: boolean): Promise<Project[]> {
   const projects = await prisma.project.findMany({
     where: featured ? { featured: true } : undefined,
@@ -52,11 +60,7 @@ export async function listAdminProjects() {
     orderBy: { createdAt: "desc" },
   });
 
-  return projects.map((project) => ({
-    ...toPublicProject(project),
-    thumbnailPublicId: project.thumbnailPublicId,
-    updatedAt: project.updatedAt.toISOString(),
-  }));
+  return projects.map(toAdminProject);
 }
 
 export async function createProject(input: ProjectInput) {

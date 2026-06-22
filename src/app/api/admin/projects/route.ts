@@ -1,7 +1,11 @@
 import { NextRequest } from "next/server";
 
 import { guardAdminApi, privateJson } from "@/lib/admin-api";
-import { createProject, listAdminProjects } from "@/lib/projects";
+import {
+  createProject,
+  listAdminProjects,
+  toAdminProject,
+} from "@/lib/projects";
 import { validateProjectInput } from "@/lib/validation";
 
 export async function GET(request: NextRequest) {
@@ -28,5 +32,5 @@ export async function POST(request: NextRequest) {
   }
 
   const project = await createProject(parsed.data);
-  return privateJson({ id: project.id }, { status: 201 });
+  return privateJson(toAdminProject(project), { status: 201 });
 }

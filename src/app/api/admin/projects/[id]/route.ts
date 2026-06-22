@@ -4,7 +4,7 @@ import { NextRequest } from "next/server";
 import { guardAdminApi, privateJson } from "@/lib/admin-api";
 import { deleteCloudinaryImage } from "@/lib/cloudinary";
 import { prisma } from "@/lib/prisma";
-import { updateProject } from "@/lib/projects";
+import { toAdminProject, updateProject } from "@/lib/projects";
 import { parseNumericId, validateProjectInput } from "@/lib/validation";
 
 type RouteContext = { params: Promise<{ id: string }> };
@@ -35,7 +35,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
       return privateJson({ error: "Project not found." }, { status: 404 });
     }
 
-    await updateProject(id, parsed.data);
+    const project = await updateProject(id, parsed.data);
 
     if (
       previous.thumbnailPublicId &&
@@ -46,7 +46,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
       });
     }
 
-    return privateJson({ success: true });
+    return privateJson(toAdminProject(project));
   } catch (error) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
@@ -75,7 +75,7 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
       });
     }
 
-    return privateJson({ success: true });
+    return privateJson({ success: true, id: project.id });
   } catch (error) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
