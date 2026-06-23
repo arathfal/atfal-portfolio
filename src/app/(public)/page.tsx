@@ -9,9 +9,13 @@ import {
 export const metadata: Metadata = {
   title: "Home",
   description:
-    "Aradea is a frontend developer creating accessible, responsive, and performant digital experiences.",
+    "Aradea Atfal is a frontend developer creating accessible, responsive, and performant digital experiences.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Aradea — Frontend Developer",
+    url: "/",
+    title: "Aradea Atfal — Frontend Developer",
     description:
       "Accessible interfaces, thoughtful interaction, and dependable frontend engineering.",
   },

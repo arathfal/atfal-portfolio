@@ -44,7 +44,7 @@ export function HeroSection() {
           </div>
 
           <p className="mb-4 font-mono text-sm font-semibold tracking-[0.24em] text-muted-foreground uppercase sm:text-base">
-            Hello, I&apos;m Aradea
+            Hello, I&apos;m Aradea Atfal
           </p>
           <h1 className="text-4xl leading-[1.08] font-bold tracking-[-0.04em] text-balance sm:text-5xl lg:text-[3.5rem] xl:text-6xl">
             Frontend developer crafting{" "}

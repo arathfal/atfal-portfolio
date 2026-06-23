@@ -11,8 +11,12 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "A selection of frontend projects spanning commerce, analytics, collaboration, travel, and fintech.",
+  alternates: {
+    canonical: "/projects",
+  },
   openGraph: {
-    title: "Projects | Aradea",
+    url: "/projects",
+    title: "Projects | Aradea Atfal",
     description:
       "Selected frontend work spanning commerce, analytics, collaboration, travel, and fintech.",
   },

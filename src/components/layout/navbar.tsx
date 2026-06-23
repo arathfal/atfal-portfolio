@@ -46,9 +46,9 @@ export function Navbar() {
         <Link
           href="/"
           className="rounded-sm text-lg font-bold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-          aria-label="Aradea — Home"
+          aria-label="Aradea Atfal — Home"
         >
-          Aradea<span className="text-primary">.</span>
+          Aradea Atfal<span className="text-primary">.</span>
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">

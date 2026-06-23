@@ -1,24 +1,28 @@
 import type { Metadata, Viewport } from "next";
 
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { siteKeywords, siteUrl } from "@/lib/site";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Aradea — Frontend Developer",
-    template: "%s | Aradea",
+    default: "Aradea Atfal — Frontend Developer",
+    template: "%s | Aradea Atfal",
   },
   description:
     "Frontend developer portfolio focused on accessible interfaces, thoughtful interaction, and dependable engineering.",
+  keywords: siteKeywords,
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Aradea Portfolio",
-    title: "Aradea — Frontend Developer",
+    siteName: "Aradea Atfal Portfolio",
+    title: "Aradea Atfal — Frontend Developer",
     description:
       "Clear interfaces, resilient code, and thoughtful digital experiences.",
     images: [
@@ -26,13 +30,13 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "Aradea Frontend Developer Portfolio",
+        alt: "Aradea Atfal Risdianto Frontend Developer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aradea — Frontend Developer",
+    title: "Aradea Atfal — Frontend Developer",
     description:
       "Clear interfaces, resilient code, and thoughtful digital experiences.",
     images: ["/og-image.svg"],

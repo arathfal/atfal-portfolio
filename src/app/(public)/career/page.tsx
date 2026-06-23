@@ -10,9 +10,13 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Career",
   description:
-    "A timeline of Aradea's frontend development experience and education.",
+    "A timeline of Aradea Atfal's frontend development experience and education.",
+  alternates: {
+    canonical: "/career",
+  },
   openGraph: {
-    title: "Career | Aradea",
+    url: "/career",
+    title: "Career | Aradea Atfal",
     description:
       "A timeline of frontend development experience, product work, and education.",
   },

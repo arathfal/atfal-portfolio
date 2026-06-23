@@ -11,7 +11,7 @@ export default function AdminDashboardLayout({
       <header className="border-b border-border bg-background">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 sm:px-6 lg:px-8">
           <Link href="/" className="text-lg font-bold">
-            Aradea Admin<span className="text-primary">.</span>
+            Aradea Atfal Admin<span className="text-primary">.</span>
           </Link>
           <AdminNavigation />
           <LogoutButton />
