@@ -16,12 +16,17 @@ function noStore(response: NextResponse): NextResponse {
   return response;
 }
 
+function getCanonicalHostname(): string {
+  return normalizeHostname(new URL(siteUrl).host);
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const hostname = getRequestHostname(request);
   const onAdminHost = isAdminHostname(hostname);
   const isAdminApi = pathname.startsWith("/api/admin");
   const isAuthApi = pathname.startsWith("/api/auth");
+  const canonicalHostname = getCanonicalHostname();
   const vercelProductionHostname = normalizeHostname(
     process.env.VERCEL_PROJECT_PRODUCTION_URL ?? null,
   );
@@ -29,7 +34,8 @@ export async function middleware(request: NextRequest) {
   if (
     process.env.NODE_ENV === "production" &&
     vercelProductionHostname &&
-    hostname === vercelProductionHostname
+    hostname === vercelProductionHostname &&
+    hostname !== canonicalHostname
   ) {
     const canonicalUrl = new URL(
       `${request.nextUrl.pathname}${request.nextUrl.search}`,
