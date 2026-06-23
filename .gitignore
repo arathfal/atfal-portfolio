@@ -15,13 +15,6 @@
 /test-results/
 /playwright-report/
 
-# local database
-/prisma/dev.db
-*.db
-*.db-journal
-*.sqlite
-*.sqlite3
-
 # next.js
 /.next/
 /out/

@@ -12,7 +12,7 @@ hostname dalam satu deployment Vercel.
 - Dashboard CRUD pada `admin.aradea-atfal.my.id`.
 - Session cookie custom dan signed upload Cloudinary untuk thumbnail project
   serta logo company/institution opsional.
-- SQLite untuk development dan Neon PostgreSQL untuk production.
+- PostgreSQL sebagai satu-satunya database untuk development dan production.
 - Dark mode dengan preferensi tersimpan.
 - Animasi reveal yang menghormati reduced-motion.
 - Metadata SEO, Open Graph, loading state, error boundary, dan empty state.
@@ -36,26 +36,14 @@ hostname dalam satu deployment Vercel.
    cp .env.example .env
    ```
 
-3. Isi environment variable admin dan Cloudinary pada `.env`, lalu generate
-   Prisma Client:
+3. Isi `DATABASE_URL`, `DIRECT_DATABASE_URL`, environment variable admin, dan
+   Cloudinary pada `.env`, lalu generate Prisma Client:
 
    ```bash
    pnpm prisma:generate
    ```
 
-4. Terapkan migration SQLite:
-
-   ```bash
-   pnpm prisma:migrate --name init
-   ```
-
-5. Isi database dengan data contoh:
-
-   ```bash
-   pnpm seed
-   ```
-
-6. Jalankan development server:
+4. Jalankan development server:
 
    ```bash
    pnpm dev
@@ -71,13 +59,12 @@ Buka:
 ```bash
 pnpm dev
 pnpm build
-pnpm build:local
 pnpm start
 pnpm lint
-pnpm seed
+pnpm typecheck
 pnpm prisma:generate
 pnpm prisma:migrate
-pnpm prisma:migrate:prod
+pnpm prisma:migrate:deploy
 pnpm prisma:validate
 ```
 
@@ -89,24 +76,30 @@ src/app/
 ├── admin/
 └── api/
 prisma/
-├── sqlite/
-├── postgresql/
-└── seed.ts
+├── migrations/
+└── schema.prisma
 ```
 
 ## Neon Production
 
-`DATABASE_URL` harus memakai Neon pooled connection dan
-`DIRECT_DATABASE_URL` memakai direct connection. Migration tidak dijalankan
-otomatis saat build:
+`DATABASE_URL` memakai Neon pooled connection dan `DIRECT_DATABASE_URL`
+memakai direct connection. Konfigurasi lokal saat ini mengarah ke PostgreSQL
+production yang sama, sehingga semua operasi CRUD dari development akan
+mengubah data production.
+
+Migration tidak dijalankan otomatis saat build. Jalankan deploy migration hanya
+ketika ada perubahan schema yang memang siap diterapkan:
 
 ```bash
-pnpm prisma:migrate:prod
+pnpm prisma:migrate:deploy
 pnpm build
 ```
 
-Jika database Neon sudah memiliki tabel, baseline migration terlebih dahulu
-sebelum menjalankan `migrate deploy`.
+Riwayat migration PostgreSQL yang ada dipertahankan di `prisma/migrations`.
+Jika database production sudah memiliki tabel tetapi migration awal belum
+tercatat di `_prisma_migrations`, baseline migration tersebut terlebih dahulu
+sebelum menjalankan `prisma:migrate:deploy`. Jangan menjalankan migration awal
+ulang terhadap tabel production yang sudah ada.
 
 ## Vercel dan Domain
 
@@ -134,5 +127,5 @@ Cloudinary upload preset wajib bertipe signed, mengizinkan folder dinamis
 JPG/JPEG/PNG/WebP dan ukuran maksimum 2 MB. Career tanpa logo akan memakai
 placeholder inisial.
 
-Sebelum dipublikasikan, ganti nama, email, tautan sosial, URL demo/repository,
-dan data seed dengan informasi asli.
+Sebelum dipublikasikan, ganti nama, email, tautan sosial, dan URL
+demo/repository dengan informasi asli.

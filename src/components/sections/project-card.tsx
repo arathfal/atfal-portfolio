@@ -14,7 +14,7 @@ export function ProjectCard({
   return (
     <Reveal delay={(index % 3) * 0.06} className="h-full">
       <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface transition duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_22px_60px_-30px_rgba(109,74,255,0.45)]">
-        <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-muted">
+        <div className="relative aspect-16/10 overflow-hidden border-b border-border bg-muted">
           <Image
             src={project.thumbnail}
             alt={`Preview of ${project.title}`}

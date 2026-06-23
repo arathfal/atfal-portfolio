@@ -44,8 +44,10 @@
   --accent: #54d4b5;
 }
 
-* {
-  border-color: var(--border);
+@layer base {
+  * {
+    border-color: var(--border);
+  }
 }
 
 html {
@@ -61,6 +63,7 @@ body {
 
 button,
 a {
+  cursor: pointer;
   touch-action: manipulation;
 }
 

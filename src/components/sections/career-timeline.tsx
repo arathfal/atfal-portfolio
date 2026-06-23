@@ -52,7 +52,7 @@ export function CareerTimeline({ experiences }: { experiences: Experience[] }) {
                   : "lg:col-start-2",
               )}
             >
-              <article className="rounded-3xl border border-border bg-surface p-6 transition-colors hover:border-primary/35 sm:p-7">
+              <article className="rounded-3xl border border-border bg-surface p-6 transition-all hover:border-primary/35 sm:p-7">
                 <div
                   className={cn(
                     "flex flex-wrap items-center gap-3",
@@ -79,7 +79,7 @@ export function CareerTimeline({ experiences }: { experiences: Experience[] }) {
 
                 <div
                   className={cn(
-                    "mt-5 flex items-center gap-4",
+                    "mt-5 flex items-start gap-4",
                     index % 2 === 0 && "lg:flex-row-reverse",
                   )}
                 >

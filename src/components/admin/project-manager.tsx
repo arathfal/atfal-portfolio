@@ -554,7 +554,7 @@ export function ProjectManager({ projects }: { projects: AdminProject[] }) {
               <button
                 type="submit"
                 disabled={submitting || deletingId !== null}
-                className="inline-flex min-w-32 items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground transition hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-60"
+                className="3items-center inline-flex justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {submitting && <LoaderCircle className="size-4 animate-spin" />}
                 {submitting
@@ -571,7 +571,7 @@ export function ProjectManager({ projects }: { projects: AdminProject[] }) {
                     setFeedback(null);
                   }}
                   disabled={submitting}
-                  className="rounded-xl border border-border px-5 py-3 font-semibold transition hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-60"
+                  className="order-border rounded-xl px-5 py-3 text-sm font-semibold transition hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-60"
                 >
                   Batal
                 </button>

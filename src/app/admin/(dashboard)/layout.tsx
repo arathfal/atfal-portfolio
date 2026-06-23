@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AdminNavigation } from "@/components/admin/admin-navigation";
 import { LogoutButton } from "@/components/admin/logout-button";
 
 export default function AdminDashboardLayout({
@@ -12,29 +13,7 @@ export default function AdminDashboardLayout({
           <Link href="/" className="text-lg font-bold">
             Aradea Admin<span className="text-primary">.</span>
           </Link>
-          <nav
-            className="flex items-center gap-2"
-            aria-label="Admin navigation"
-          >
-            <Link
-              href="/"
-              className="rounded-full px-4 py-2 text-sm font-medium hover:bg-muted"
-            >
-              Overview
-            </Link>
-            <Link
-              href="/projects"
-              className="rounded-full px-4 py-2 text-sm font-medium hover:bg-muted"
-            >
-              Projects
-            </Link>
-            <Link
-              href="/career"
-              className="rounded-full px-4 py-2 text-sm font-medium hover:bg-muted"
-            >
-              Career
-            </Link>
-          </nav>
+          <AdminNavigation />
           <LogoutButton />
         </div>
       </header>
