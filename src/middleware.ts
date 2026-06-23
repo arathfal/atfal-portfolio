@@ -5,7 +5,9 @@ import {
   getRequestHostname,
   isAdminHostname,
   isLocalHostname,
+  normalizeHostname,
 } from "@/lib/request";
+import { siteUrl } from "@/lib/site";
 
 const PUBLIC_FILE = /\.[^/]+$/;
 
@@ -20,6 +22,22 @@ export async function middleware(request: NextRequest) {
   const onAdminHost = isAdminHostname(hostname);
   const isAdminApi = pathname.startsWith("/api/admin");
   const isAuthApi = pathname.startsWith("/api/auth");
+  const vercelProductionHostname = normalizeHostname(
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ?? null,
+  );
+
+  if (
+    process.env.NODE_ENV === "production" &&
+    vercelProductionHostname &&
+    hostname === vercelProductionHostname
+  ) {
+    const canonicalUrl = new URL(
+      `${request.nextUrl.pathname}${request.nextUrl.search}`,
+      siteUrl,
+    );
+
+    return NextResponse.redirect(canonicalUrl, 308);
+  }
 
   if (isAdminApi || isAuthApi) {
     if (!onAdminHost && !isLocalHostname(hostname)) {
