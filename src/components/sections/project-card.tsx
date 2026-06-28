@@ -61,7 +61,8 @@ export function ProjectCard({
             )}
             {project.demoUrl && !project.status && (
               <span
-                className="inline-flex cursor-not-allowed items-center gap-1.5 text-sm font-semibold text-muted-foreground/70"
+                className="inline-flex cursor-not-allowed items-center gap-1.5 text-sm font-semibold text-muted-foreground"
+                aria-disabled="true"
                 title="Demo ini sudah tidak dapat diakses"
               >
                 Demo unavailable

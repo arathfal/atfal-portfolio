@@ -35,6 +35,7 @@ async function CareerContent() {
         eyebrow="Career"
         title="The path so far."
         description="A timeline of teams, classrooms, and product challenges that shaped how I approach frontend work today."
+        level="h1"
       />
 
       {experiences.length > 0 ? (

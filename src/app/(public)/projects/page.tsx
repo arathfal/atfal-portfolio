@@ -35,6 +35,7 @@ async function ProjectsContent() {
         eyebrow="Selected work"
         title="Products built with purpose."
         description="A mix of product interfaces, experiments, and systems where frontend craft solves a real user problem."
+        level="h1"
       />
 
       {projects.length > 0 ? (

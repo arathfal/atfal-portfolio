@@ -8,10 +8,10 @@
   --muted: #f1f1f3;
   --muted-foreground: #65656f;
   --border: #e2e2e7;
-  --primary: #6d4aff;
+  --primary: #6643f5;
   --primary-foreground: #ffffff;
   --primary-soft: #eeeaff;
-  --accent: #16a085;
+  --accent: #087765;
 }
 
 @theme inline {
