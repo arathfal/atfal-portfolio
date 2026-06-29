@@ -65,7 +65,7 @@ export function HeroSection() {
               <ArrowRight aria-hidden="true" className="size-4" />
             </Link>
             <a
-              href="mailto:hello@example.com"
+              href="mailto:aradeaa9@gmail.com"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-border bg-surface px-6 font-semibold transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               <Mail aria-hidden="true" className="size-4" />
@@ -122,7 +122,7 @@ export function AboutSection() {
             references or overthinking a very simple cup of coffee.
           </p>
           <a
-            href="https://github.com/"
+            href="https://github.com/arathfal"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-sm font-semibold text-primary hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"

@@ -3,17 +3,17 @@ import { ContactRound, GitFork, Mail } from "lucide-react";
 const socialLinks = [
   {
     label: "GitHub",
-    href: "https://github.com/",
+    href: "https://github.com/arathfal",
     icon: GitFork,
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/aradea-atfal/",
     icon: ContactRound,
   },
   {
     label: "Email",
-    href: "mailto:hello@example.com",
+    href: "mailto:aradeaa9@gmail.com",
     icon: Mail,
   },
 ];

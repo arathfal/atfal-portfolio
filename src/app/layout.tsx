@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       "Clear interfaces, resilient code, and thoughtful digital experiences.",
     images: [
       {
-        url: "/og-image.svg",
+        url: "https://aradea-atfal.my.id/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Aradea Atfal Risdianto Frontend Developer Portfolio",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "Aradea Atfal — Frontend Developer",
     description:
       "Clear interfaces, resilient code, and thoughtful digital experiences.",
-    images: ["/og-image.svg"],
+    images: ["https://aradea-atfal.my.id/og-image.svg"],
   },
 };
 
