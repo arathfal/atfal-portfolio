@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 import { ThemeToggle } from "./theme-toggle";
+import Image from "next/image";
 
 const navigation = [
   { label: "Home / About", href: "/" },
@@ -43,13 +44,26 @@ export function Navbar() {
         className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6 lg:px-8"
         aria-label="Primary navigation"
       >
-        <Link
-          href="/"
-          className="rounded-sm text-lg font-bold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-          aria-label="Aradea Atfal — Home"
-        >
-          Aradea Atfal<span className="text-primary">.</span>
-        </Link>
+        <div className="flex items-center gap-2">
+          <div className="overflow-hidden rounded-full bg-white p-0.5">
+            <Image
+              src="/images/Black Logo.png"
+              width={24}
+              height={24}
+              alt="Logo"
+              sizes="100%"
+              priority
+              className="shrink-0"
+            />
+          </div>
+          <Link
+            href="/"
+            className="rounded-sm text-lg font-bold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            aria-label="Aradea Atfal — Home"
+          >
+            Aradea Atfal<span className="text-primary">.</span>
+          </Link>
+        </div>
 
         <div className="hidden items-center gap-1 md:flex">
           {navigation.map((item) => (

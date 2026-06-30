@@ -84,7 +84,7 @@ export function HeroSection() {
           />
           <div className="relative aspect-4/5 overflow-hidden rounded-[2.5rem] border border-primary/20 bg-linear-to-b from-primary-soft via-surface to-accent/10 shadow-[0_30px_90px_-40px_rgba(109,74,255,0.6)]">
             <Image
-              src="/images/profile/aradea-hero.png"
+              src="/images/aradea-hero.png"
               alt="Portrait of Aradea Atfal Risdianto"
               fill
               sizes="(min-width: 1280px) 405px, 385px"

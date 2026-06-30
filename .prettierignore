@@ -5,4 +5,4 @@ build
 coverage
 prisma/dev.db
 package-lock.json
-public/images/profile/aradea-hero.png
+public/
